@@ -1,4 +1,8 @@
 
+a {
+    text-decoration: none;
+}
+
 
 body {
     background-color: #0000 !important;
@@ -11,6 +15,8 @@ form {
 
 section {
     padding-top: 15px;
+    padding-bottom: 50px;
+
 }
 
 #nav-pane {
@@ -30,5 +36,15 @@ h2:hover {
 }
 
 img {
-    width: 500px;
+    width: 500px;   
+}
+
+
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: white;
+    text-align: center;
 }

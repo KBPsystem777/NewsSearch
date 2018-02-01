@@ -24,3 +24,7 @@ section {
 nav {
     padding-top: 20px;
 }
+
+h2:hover {
+    color: blue;
+}

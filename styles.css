@@ -28,3 +28,7 @@ nav {
 h2:hover {
     color: blue;
 }
+
+img {
+    width: 500px;
+}

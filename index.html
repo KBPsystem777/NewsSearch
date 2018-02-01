@@ -2,173 +2,47 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>NY Times API example</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link href="https://raw.githubusercontent.com/mdn/learning-area/master/javascript/apis/third-party-apis/nytimes/nytimes.css" rel="stylesheet">
+    <title>newsSearch</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans" rel="stylesheet">
   </head>
   <body>
-    <h1 class="text-center">NY Times Article search</h1>
-
-    <div class="wrapper">
-
+    <div class="w3-center w3-black w3-large" id="nav-pane">
+      <h1 class="text-center">NewsSearch</h1>
+    </div>
+    <div class="w3-container">
       <div class="controls">
-        <form>
+        <form class="w3-center">
           <p>
             <label for="search">Enter a SINGLE search term (required): </label>
             <input type="text" id="search" class="search" required>
           </p>
           <p>
-            <label for="start-date">Enter a start date (format YYYYMMDD): </label>
+            <label for="start-date">Enter a start date (format MM/DD/YYYY): </label>
             <input type="date" id="start-date" class="start-date" pattern="[0-9]{8}">
           </p>
           <p>
-            <label for="end-date">Enter an end date (format YYYYMMDD): </label>
+            <label for="end-date">Enter an end date (format MM/DD/YYYY): </label>
             <input type="date" id="end-date" class="end-date" pattern="[0-9]{8}">
           </p>
           <p>
-            <button class="submit">Submit search</button>
+            <button class="submit w3-black w3-btn w3-round-xxlarge">Search</button>
           </p>
         </form>
       </div>
-
       <div class="results">
-        <nav>
-          <button class="prev">Previous 10</button>
-          <button class="next">Next 10</button>
+        <nav class="w3-center">
+          <button class="prev w3-black w3-btn"><< Previous</button>
+          <button class="next w3-black w3-btn">Next >></button>
         </nav>
-
-        <section>
-        </section>
+        <div class="w3-center">
+          <section>
+          </section>
+        </div>
       </div>
-
     </div>
-
-    <script>
-      // Defining a baseURL and key to as part of the request URL
-      var baseURL = 'https://api.nytimes.com/svc/search/v2/articlesearch.json';
-      var key = '1ed26feafefb44c2b917c98e9d60c8b3';
-      var url;
-      // Grab references to all the DOM elements you'll need to manipulate
-      var searchTerm = document.querySelector('.search');
-      var startDate = document.querySelector('.start-date');
-      var endDate = document.querySelector('.end-date');
-      var searchForm = document.querySelector('form');
-      var submitBtn = document.querySelector('.submit');
-      var nextBtn = document.querySelector('.next');
-      var previousBtn = document.querySelector('.prev');
-      var section = document.querySelector('section');
-      var nav = document.querySelector('nav');
-      // Hide the "Previous"/"Next" navigation to begin with, as we don't need it immediately
-      nav.style.display = 'none';
-      // define the initial page number and status of the navigation being displayed
-      var pageNumber = 0;
-      var displayNav = false;
-      // Event listeners to control the functionality
-      searchForm.addEventListener('submit', fetchResults);
-      nextBtn.addEventListener('click', nextPage);
-      previousBtn.addEventListener('click', previousPage);
-
-
-      function fetchResults(e) {
-          //use preventDefault() to stop the form submitting;
-          e.preventDefault();
-          //Assembling the full URL
-          url = baseURL + '?apikey=' + key + '&page=' + pageNumber + '&q=' + searchTerm.value;
-                //Dates
-          if (startDate.value !== '') {
-            url += '&begin_date=' + startDate.value;
-          };
-          if (endDate.value !== '') {
-            url += '&end_date=' + endDate.value;
-          };
-
-          //Fetch the url value
-          fetch(url).then(function (result) {
-            return result.json();
-          }).then(function (json) {
-            displayResults(json);
-          });
-
-
-        }
-
-    //Displaying the RESULTS
-      function displayResults(json) {
-        while (section.firstChild) {
-          section.removeChild(section.firstChild);
-        }
-        var articles = json.response.docs;
-
-        if (articles.length === 10) {
-          nav.style.display = 'block';
-        } else {
-          nav.style.display = 'none';
-        }
-
-        if (articles.length === 0) {
-          var para = document.createElement('p');
-          para.textContent = 'No results returned';
-          section.appendChild(para);
-        } else {
-          for (var i = 0; i < articles.length; i++) {
-            var article = document.createElement('article');
-            var heading = document.createElement('h2');
-            var link = document.createElement('a');
-            var img = document.createElement('img');
-            var para1 = document.createElement('p');
-            var para2 = document.createElement('p');
-            var clearfix = document.createElement('div');
-
-            var current = articles[i];
-            console.log(current);
-
-            link.href = current.web_url;
-            link.textContent = current.headline.main;
-            para1.textContent = current.lead_paragraph;
-            para2.textContent = 'Keywords: ';
-            for (var j = 0; j < current.keywords.length; j++) {
-              var span = document.createElement('span');
-              span.textContent += current.keywords[j].value + ' ';
-              para2.appendChild(span);
-            }
-
-            if (current.multimedia.length > 0) {
-              img.src = 'http://www.nytimes.com/' + current.multimedia[0].url;
-              img.alt = current.headline.main;
-            }
-
-            clearfix.setAttribute('class', 'clearfix');
-
-            article.appendChild(heading);
-            heading.appendChild(link);
-            article.appendChild(img);
-            article.appendChild(para1);
-            article.appendChild(para2);
-            article.appendChild(clearfix);
-            section.appendChild(article);
-
-          }
-        }
-      }; 
-
-
-      function nextPage(e) {
-        pageNumber++;
-        fetchResults(e);
-      };
-
-      function previousPage(e) {
-        if(pageNumber > 0) {
-          pageNumber--;
-        } else {
-          return;
-        }
-        fetchResults(e);
-      };
-
-    </script>
-
-
+    <script src="script.js" type="text/javascript"></script>
   </body>
 </html>
 

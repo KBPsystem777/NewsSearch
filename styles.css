@@ -1,0 +1,26 @@
+
+
+body {
+    background-color: #0000 !important;
+    font-family: 'Merriweather Sans', sans-serif !important;
+}
+
+form {
+    padding-top: 100px;
+}
+
+section {
+    padding-top: 15px;
+}
+
+#nav-pane {
+    overflow: hidden;
+    background-color: #333;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+nav {
+    padding-top: 20px;
+}

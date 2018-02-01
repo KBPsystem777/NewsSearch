@@ -67,7 +67,7 @@ function displayResults(json) {
     } else {
         for (var i = 0; i < articles.length; i++) {
             var article = document.createElement('article');
-            var heading = document.createElement('h2');
+            var heading = document.createElement('h4');
             var link = document.createElement('a');
             var img = document.createElement('img');
             var para1 = document.createElement('p');
@@ -120,3 +120,10 @@ function previousPage(e) {
     }
     fetchResults(e);
 };
+
+//back to top
+
+function backToTop() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+}

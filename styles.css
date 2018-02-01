@@ -32,13 +32,9 @@ nav {
     padding-top: 20px;
 }
 
-h4 {
-    font-style: italic;
-    font-weight: bold;
-}
 
-h4:hover {
-    color: blue;
+h4 {
+    color: rgb(93, 93, 226);
     font-style: italic;
 }
 

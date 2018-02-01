@@ -29,13 +29,6 @@ function fetchResults(e) {
     e.preventDefault();
     //Assembling the full URL
     url = baseURL + '?apikey=' + key + '&page=' + pageNumber + '&q=' + searchTerm.value;
-    //Dates
-    if (startDate.value !== '') {
-        url += '&begin_date=' + startDate.value;
-    };
-    if (endDate.value !== '') {
-        url += '&end_date=' + endDate.value;
-    };
 
     //Fetch the url value
     fetch(url).then(function (result) {

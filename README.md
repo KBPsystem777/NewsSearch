@@ -1,4 +1,4 @@
-# newsSearch
+# NewsSearch
 
 > From a given `keyword`, the app will search every news article related to that wayback 1851!
 
@@ -15,3 +15,8 @@
 
 ```
 - Run the `index.html` to your browser
+
+
+***
+
+> License: https://github.com/KBPsystem777/NewsSearch/blob/master/license.md

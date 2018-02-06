@@ -20,6 +20,10 @@ section {
 
 }
 
+#kbp-tags {
+    background-color: #7c808d !important;
+}
+
 #nav-pane {
     overflow: hidden;
     background-color: #333;

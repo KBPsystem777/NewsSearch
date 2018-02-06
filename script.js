@@ -64,7 +64,7 @@ function displayResults(json) {
             var link = document.createElement('a');
             var img = document.createElement('img');
             var para1 = document.createElement('p');
-            var para2 = document.createElement('p');
+            //var para2 = document.createElement('p');
             var clearfix = document.createElement('div');
 
             var current = articles[i];
@@ -73,11 +73,11 @@ function displayResults(json) {
             link.href = current.web_url;
             link.textContent = current.headline.main;
             para1.textContent = current.lead_paragraph;
-            para2.textContent = 'Keywords: ';
+            //para2.textContent = 'Keywords: ';
             for (var j = 0; j < current.keywords.length; j++) {
                 var span = document.createElement('span');
                 span.textContent += current.keywords[j].value + ' ';
-                para2.appendChild(span);
+                //para2.appendChild(span);
             }
 
             if (current.multimedia.length > 0) {
@@ -91,7 +91,7 @@ function displayResults(json) {
             heading.appendChild(link);
             article.appendChild(img);
             article.appendChild(para1);
-            article.appendChild(para2);
+            //article.appendChild(para2);
             article.appendChild(clearfix);
             section.appendChild(article);
 

@@ -10,14 +10,18 @@
   </head>
   <body class="w3-mobile">
     <div class="w3-center w3-black w3-large" id="nav-pane">
-      <h1 class="text-center" onclick="backToTop()">NewsSearch</h1>
+    <div class="w3-row">
+      <div class="w3-col w3-container w3-black" onclick="backToTop()">
+        <h1>NewsSearch</h1>
+      </div>
+    </div>
     </div>
     <div class="w3-container">
       <div class="controls">
         <form class="w3-center">
           <p>
             <label for="search">Enter a SINGLE search term: </label>
-            <input type="text" id="search" class="search" required>
+            <input type="text" id="search" class="search w3-input w3-animate-input w3-center" required>
           </p>
           <p>
             <button class="submit w3-black w3-btn w3-round-xxlarge">Search</button>

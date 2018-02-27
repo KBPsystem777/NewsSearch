@@ -124,7 +124,7 @@ function backToTop() {
 
 
 //Back To Up Pop-Up Function
-
+//Automatically invoke scrollFunction() as soon as window is scrolled
 window.onscroll = function() {
     scrollFunction()    
 };
@@ -140,4 +140,3 @@ function topFunction(){
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
 }
-

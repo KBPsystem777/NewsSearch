@@ -4,7 +4,6 @@
 
 >  Implemented using NY Times' [Article API](https://developer.nytimes.com/)
 
-> Redesigning [MDN's API tutorial](https://mdn.mozillademos.org/files/14821/nytimes-search.png)
 
 ## Clone It!
 

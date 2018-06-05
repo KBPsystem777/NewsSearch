@@ -94,8 +94,8 @@ function displayResults(json) {
 
             article.appendChild(heading);
             heading.appendChild(link);
-            article.appendChild(img);
             article.appendChild(para1);
+            article.appendChild(img);
             //article.appendChild(para2);
             article.appendChild(clearfix);
             section.appendChild(article);
@@ -131,7 +131,7 @@ function backToTop() {
 //Back To Up Pop-Up Function
 //Automatically invoke scrollFunction() as soon as window is scrolled
 window.onscroll = function() {
-    scrollFunction()    
+    scrollFunction();
 };
 
 function scrollFunction() {

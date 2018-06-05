@@ -1,15 +1,12 @@
-# NewsSearch
+# [NewsSearch](https://newssearch.now.sh)
 
-> From a given `keyword`, the app will search every news article related to that wayback 1851!
-
->  Implemented using NY Times' [Article API](https://developer.nytimes.com/)
+Your news channel. Utilizing NYTimes news API in displaying and seraching news published in NYTimes.
 
 
-## Clone It!
+### Clone It!
 
 ```
 > git clone https://github.com/KBPsystem777/newsSearch
-
 > cd newsSearch
 
 ```
@@ -18,4 +15,7 @@
 
 ***
 
-> License: https://github.com/KBPsystem777/NewsSearch/blob/master/license.md
+### License: 
+
+
+[NewsSearch/License](https://github.com/KBPsystem777/NewsSearch/blob/master/license.md)

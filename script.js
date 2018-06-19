@@ -1,36 +1,29 @@
 
 // Defining a baseURL and key to as part of the request URL
-var baseURL = 'https://api.nytimes.com/svc/search/v2/articlesearch.json';
-var key = '1ed26feafefb44c2b917c98e9d60c8b3';
-var url;
+const baseURL = 'https://api.nytimes.com/svc/search/v2/articlesearch.json';
+const key = '1ed26feafefb44c2b917c98e9d60c8b3';
 
 
 // Grab references to all the DOM elements you'll need to manipulate
-var searchTerm = document.querySelector('.search');
-var startDate = document.querySelector('.start-date');
-var endDate = document.querySelector('.end-date');
-var searchForm = document.querySelector('form');
-var submitBtn = document.querySelector('.submit');
-var nextBtn = document.querySelector('.next');
-var previousBtn = document.querySelector('.prev');
-var section = document.querySelector('section');
-var nav = document.querySelector('nav');
+let searchTerm = document.getElementsByClassName('.search');
+let startDate = document.getElementsByClassName('.start-date');
+let endDate = document.getElementsByClassName('.end-date');
+let searchForm = document.getElementsByClassName('form');
+let submitBtn = document.getElementsByClassName('.submit');
+let nextBtn = document.getElementsByClassName('.next');
+let previousBtn = document.getElementsByClassName('.prev');
+let section = document.getElementsByClassName('section');
+let nav = document.getElementsByClassName('nav');
 
 // Hide the "Previous"/"Next" navigation to begin with, as we don't need it immediately
-nav.style.display = 'none';
+//nav.style.display = 'none';
 
 // define the initial page number and status of the navigation being displayed
 var pageNumber = 0;
 var displayNav = false;
 
 // Event listeners to control the functionality
-searchForm.addEventListener('submit', fetchResults);
-nextBtn.addEventListener('click', nextPage);
-previousBtn.addEventListener('click', previousPage);
-
-
-function fetchResults(e) {
-    //use preventDefault() to stop the form submitting;
+searchForm.onclick = (event) => {
     e.preventDefault();
     //Assembling the full URL
     url = baseURL + '?apikey=' + key + '&page=' + pageNumber + '&q=' + searchTerm.value;
@@ -42,8 +35,22 @@ function fetchResults(e) {
         displayResults(json);
     });
 
+};
 
-}
+nextBtn.onclick = (event) => {
+    pageNumber++;
+    fetchResults(e);
+};
+
+previousBtn.onclick = (event) => {
+    if (pageNumber > 0) {
+        pageNumber--;
+    } else {
+        return;
+    }
+    fetchResults(e);
+};
+
 
 //Displaying the RESULTS
 function displayResults(json) {
@@ -105,19 +112,6 @@ function displayResults(json) {
 };
 
 
-function nextPage(e) {
-    pageNumber++;
-    fetchResults(e);
-};
-
-function previousPage(e) {
-    if (pageNumber > 0) {
-        pageNumber--;
-    } else {
-        return;
-    }
-    fetchResults(e);
-};
 
 //back to top
 
